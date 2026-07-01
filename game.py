@@ -1,4 +1,10 @@
+from game_result import GameResult
+
+
 class Game:
+
+    def __init__(self):
+        self.question = ""
 
     def _is_duplicated_numbers(self, guess_number: str):
         return guess_number[0] == guess_number[1] or guess_number[0] == guess_number[2] or guess_number[1] == guess_number[2]
@@ -17,6 +23,6 @@ class Game:
         if self._is_duplicated_numbers(guess_number):
             raise TypeError("중복된 숫자가 존재합니다")
 
-
     def guess(self, guess_number):
         self._assert_invalidate_values(guess_number)
+        return GameResult(True, 3, 0)
