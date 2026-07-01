@@ -35,4 +35,4 @@ class Game:
         self._assert_invalidate_values(guess_number)
         if guess_number == self._question:
             return GameResult(True, 3, 0)
-        return None
+        return GameResult(False, 0, 0)
