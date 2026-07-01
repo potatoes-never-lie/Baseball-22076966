@@ -4,7 +4,15 @@ from game_result import GameResult
 class Game:
 
     def __init__(self):
-        self.question = ""
+        self._question = ""
+
+    @property
+    def question(self):
+        raise AttributeError("cannot read question")
+
+    @question.setter
+    def question(self, question):
+        self._question = question
 
     def _is_duplicated_numbers(self, guess_number: str):
         return guess_number[0] == guess_number[1] or guess_number[0] == guess_number[2] or guess_number[1] == guess_number[2]
@@ -25,4 +33,6 @@ class Game:
 
     def guess(self, guess_number):
         self._assert_invalidate_values(guess_number)
-        return GameResult(True, 3, 0)
+        if guess_number == self._question:
+            return GameResult(True, 3, 0)
+        return None
