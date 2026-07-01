@@ -1,3 +1,6 @@
+import random
+import string
+
 from game_result import GameResult
 
 
@@ -46,3 +49,33 @@ class Game:
                     _ball += 1
 
             return GameResult(False, _strike, _ball)
+
+def play_game(correct_answer):
+
+    game = Game()
+    game.question = correct_answer
+    print("=============게임을 시작합니다.===============\n")
+    print("============단 10번의 기회만 주어집니다!!!!!!===========")
+    cnt = 0
+    is_solved: bool = False
+    while cnt < 10:
+        s = input("3자리 숫자를 써주세요.\n")
+        try:
+            result = game.guess(s)
+            if result.solved:
+                print("정답!!!!!!")
+                is_solved = True
+                break
+            print("오답입니다 ..")
+            print(result.__repr__())
+        except TypeError as e:
+            print(e.__str__())
+            continue
+        cnt += 1
+
+    if not is_solved:
+        print(f"정답은...{correct_answer} 이었습니다..")
+
+
+if __name__ == "__main__":
+    play_game("".join(random.choices(string.digits, k=3)))

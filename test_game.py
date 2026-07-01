@@ -36,4 +36,4 @@ def test_return_solved_result_case1(game):
 
 def test_return_solved_result_case2(game):
     game.question = "123"
-    assert_matched_number(result=game.guess("132"),solved=False,strikes=1,balls=2)
+    assert_matched_number(result=game.guess("129"),solved=False,strikes=2,balls=0)

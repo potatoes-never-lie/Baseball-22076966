@@ -15,3 +15,6 @@ class GameResult:
     @property
     def balls(self):
         return self._balls
+
+    def __repr__(self):
+        return f'strikes: {self.strikes}  balls: {self.balls}'
