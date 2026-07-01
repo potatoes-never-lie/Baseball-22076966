@@ -35,4 +35,14 @@ class Game:
         self._assert_invalidate_values(guess_number)
         if guess_number == self._question:
             return GameResult(True, 3, 0)
-        return GameResult(False, 0, 0)
+        else:
+            _strike = 0
+            _ball = 0
+
+            for idx, digit in enumerate(guess_number):
+                if digit == self._question[idx]:
+                    _strike += 1
+                elif digit in self._question:
+                    _ball += 1
+
+            return GameResult(False, _strike, _ball)
