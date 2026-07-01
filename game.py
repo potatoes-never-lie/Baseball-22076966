@@ -1,14 +1,22 @@
 class Game:
-    def guess(self, guessNumber):
-        if guessNumber is None:
-            raise TypeError()
 
-        if len(guessNumber) != 3:
-            raise TypeError()
+    def _is_duplicated_numbers(self, guess_number: str):
+        return guess_number[0] == guess_number[1] or guess_number[0] == guess_number[2] or guess_number[1] == guess_number[2]
 
-        for number in guessNumber:
-            if not (ord('0') <= ord(number) <= ord('9')):
-                raise TypeError()
+    def _assert_invalidate_values(self, guess_number):
 
-        if guessNumber[0] == guessNumber[1] or guessNumber[0] == guessNumber[2] or guessNumber[1] == guessNumber[2]:
-            raise TypeError()
+        if guess_number is None:
+            raise TypeError("입력이 None 입니다")
+
+        if len(guess_number) != 3:
+            raise TypeError("입력은 3자리 문자열입니다")
+
+        if not guess_number.isdigit():
+            raise TypeError("입력은 숫자 문자열만 가능합니다")
+
+        if self._is_duplicated_numbers(guess_number):
+            raise TypeError("중복된 숫자가 존재합니다")
+
+
+    def guess(self, guess_number):
+        self._assert_invalidate_values(guess_number)
