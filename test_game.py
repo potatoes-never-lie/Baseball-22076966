@@ -15,6 +15,8 @@ def assert_illegal_argument(game, guess_number):
 
 def test_exception_when_input_is_invalid(game):
     assert_illegal_argument(game, None)
-    assert_illegal_argument(game, 12)
-    assert_illegal_argument(game, 1234)
+    assert_illegal_argument(game, "12")
+    assert_illegal_argument(game, "1234")
+    assert_illegal_argument(game, "1s4")
+
 
