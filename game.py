@@ -7,5 +7,8 @@ class Game:
             raise TypeError()
 
         for number in guessNumber:
-            if not ord('0') <= number <= ord('9'):
+            if not (ord('0') <= ord(number) <= ord('9')):
                 raise TypeError()
+
+        if guessNumber[0] == guessNumber[1] or guessNumber[0] == guessNumber[2] or guessNumber[1] == guessNumber[2]:
+            raise TypeError()
